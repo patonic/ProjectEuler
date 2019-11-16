@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ProjectEuler
 {
@@ -10,7 +8,7 @@ namespace ProjectEuler
     {
         static int min = 1;
         static int max = 20;
-        static int numTry = 1;
+        static int numTry = 3;
 
         static void Main(string[] args)
         {
@@ -40,6 +38,7 @@ namespace ProjectEuler
                 foreach (int item in optimNum)
                     if (i % item != 0)
                         check = false;
+                
                 if (check)
                     answer = i;
             }
