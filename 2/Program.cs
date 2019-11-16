@@ -12,6 +12,7 @@ namespace ProjectEuler
         {
             for (int i = 0; i < numTry; i++)
                 calculating();
+            Console.ReadKey();
         }
 
         static void calculating()

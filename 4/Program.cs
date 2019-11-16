@@ -8,7 +8,7 @@ namespace ProjectEuler
 {
     class Program
     {
-        static long number = 600851475143;
+        static long numDig = 3;
         static int numTry = 1;
 
         static void Main(string[] args)
@@ -23,17 +23,20 @@ namespace ProjectEuler
             Stopwatch sw = Stopwatch.StartNew();
 
             List<long> numbers = new List<long>();
-            Parallel.For(2, number / 2, delegate (long i)
+            long startNumber = Convert.ToInt64(Math.Pow(10, numDig-1));
+            Parallel.For(startNumber, Convert.ToInt64(Math.Pow(10, numDig)), delegate (long i)
             {
-                if (number % i == 0)
+                Parallel.For(startNumber, Convert.ToInt64(Math.Pow(10, numDig)), delegate (long j)
                 {
-                    bool check = false;
-                    for (long j = 2; j < i && !check; j++)
-                        if (i % j == 0)
-                            check = true;
-                    if (!check)
-                        numbers.Add(i);
-                }
+                    bool check = true;
+                    string num = Convert.ToString(i*j);
+
+                    for (int n = 0; n <= num.Length / 2; n++)
+                        if (num[n] != num[(num.Length - 1) - n])
+                            check = false;
+                    if (check)
+                        numbers.Add(Convert.ToInt64(num));
+                });
             });
 
             Console.WriteLine(numbers.Max() + " (" + sw.ElapsedMilliseconds + "ms)");
