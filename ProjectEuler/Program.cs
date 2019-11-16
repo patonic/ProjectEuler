@@ -22,7 +22,7 @@ namespace ProjectEuler
             Stopwatch sw = Stopwatch.StartNew();
 
             Int64 sum = 0;
-            Parallel.For(minNumber, maxNumber + 1, delegate (int i)
+            Parallel.For(minNumber, maxNumber, delegate (int i)
             {
                 bool addSumm = false;
                 foreach (int item in shearchNumber)
