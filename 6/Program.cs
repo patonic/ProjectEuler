@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace _4
+namespace _6
 {
     class Program
     {
@@ -23,14 +23,14 @@ namespace _4
             Stopwatch sw = Stopwatch.StartNew();
 
             List<long> numbers = new List<long>();
-            long startNumber = Convert.ToInt64(Math.Pow(10, numDig-1));
+            long startNumber = Convert.ToInt64(Math.Pow(10, numDig - 1));
             Parallel.For(startNumber, Convert.ToInt64(Math.Pow(10, numDig)), delegate (long i)
             {
                 Parallel.For(startNumber, Convert.ToInt64(Math.Pow(10, numDig)), delegate (long j)
                 {
 
                     bool check = true;
-                    string num = Convert.ToString(i*j);
+                    string num = Convert.ToString(i * j);
 
                     for (int n = 0; n <= num.Length / 2; n++)
                         if (num[n] != num[(num.Length - 1) - n])

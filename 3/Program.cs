@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProjectEuler
+namespace _3
 {
     class Program
     {

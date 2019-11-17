@@ -2,12 +2,12 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace ProjectEuler
+namespace _5
 {
     class Program
     {
         static int min = 1;
-        static int max = 20;
+        static int max = 25;
         static int numTry = 3;
 
         static void Main(string[] args)

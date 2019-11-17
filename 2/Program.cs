@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ProjectEuler
+namespace _2
 {
     class Program
     {
