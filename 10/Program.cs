@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Numerics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace _7
+namespace _10
 {
     class Program
     {
-        static int maxNum = 10001; 
-        static int numTry = 3;
+        static int maxNum = 2000000;
+        static int numTry = 1;
 
         static void Main(string[] args)
         {
@@ -22,11 +23,11 @@ namespace _7
             Stopwatch sw = Stopwatch.StartNew();
 
             double number = 2;
-            List<long> numbers = new List<long> {2};
-            for (long i = 3; numbers.Count !=maxNum; i+=2)
+            List<int> numbers = new List<int> { 2 };
+            for (int i = 3; i < maxNum; i += 2)
             {
                 bool check = true;
-                Parallel.ForEach(numbers, (long num) =>
+                Parallel.ForEach(numbers, (int num) =>
                 {
                     if (i % num == 0)
                         check = false;
@@ -35,7 +36,11 @@ namespace _7
                     numbers.Add(i);
             }
 
-            Console.WriteLine(numbers[maxNum-1] + " (" + sw.ElapsedMilliseconds + "ms)");
+            BigInteger sum = 0;
+            foreach (BigInteger item in numbers)
+                sum += item;
+
+            Console.WriteLine(sum + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
         }
     }
