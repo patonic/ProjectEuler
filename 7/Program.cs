@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace _6
+namespace _7
 {
     class Program
     {
@@ -23,9 +25,9 @@ namespace _6
             double summA = Math.Pow(((maxNum * (maxNum + 1)) / 2), 2);
             double summB = 0;
             Parallel.For(1, maxNum + 1, delegate (long i)
-              {
-                  summB += Math.Pow(i, 2);
-              });
+            {
+                summB += Math.Pow(i, 2);
+            });
 
             Console.WriteLine(summA - summB + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
