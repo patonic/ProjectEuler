@@ -3,8 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>_13</RootNamespace>
-    <Platforms>AnyCPU;x64</Platforms>
+    <RootNamespace>_16</RootNamespace>
   </PropertyGroup>
 
 </Project>
