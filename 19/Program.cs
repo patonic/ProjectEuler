@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Numerics;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace _19
 {
     class Program
     {
+        static DateTime minDate = new DateTime(1901, 1, 1);
+        static DateTime maxDate = new DateTime(2000, 12, 31);
         static int numTry = 25;
 
         static void Main(string[] args)
@@ -22,9 +20,16 @@ namespace _19
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            
+            DateTime time = minDate;
+            uint count = 0;
+            while (time <= maxDate)
+            {
+                if (time.DayOfWeek == DayOfWeek.Sunday)
+                    count++;
+                time = time.AddMonths(1);
+            }
 
-            Console.WriteLine(1 + " (" + sw.ElapsedMilliseconds + "ms)");
+            Console.WriteLine(count + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
         }
     }
