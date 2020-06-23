@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Numerics;
-using System.Threading.Tasks;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,7 +8,8 @@ namespace _22
 {
     class Program
     {
-        static int maxNum = 10000;
+        static char[] alphabet = { '_', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+        static string file = "names.txt";
         static int numTry = 25;
 
         static void Main(string[] args)
@@ -23,9 +23,22 @@ namespace _22
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            
+            List<string> names = File.ReadAllText(file).Split(',', StringSplitOptions.RemoveEmptyEntries).ToList();
+            for (int i = 0; i < names.Count; i++)
+                names[i] = names[i].Trim('"');
 
-            Console.WriteLine(1 + " (" + sw.ElapsedMilliseconds + "ms)");
+            names.Sort();
+            UInt64 sum = 0;
+
+            for (int i = 0; i < names.Count; i++)
+            {
+                int aValue = 0;
+                foreach (var item in names[i])
+                    aValue += Array.IndexOf(alphabet, item);
+                sum = sum + (UInt64)(aValue * (i+1));
+            }
+
+            Console.WriteLine(sum + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
         }
     }
