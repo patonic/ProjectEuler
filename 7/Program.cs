@@ -21,7 +21,6 @@ namespace _7
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            double number = 2;
             List<long> numbers = new List<long> {2};
             for (long i = 3; numbers.Count !=maxNum; i+=2)
             {
