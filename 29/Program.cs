@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Numerics;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace _29
 {
     class Program
     {
-        static int size = 1001;
+        static int minA = 2;
+        static int minB = 2;
+        static int maxA = 100;
+        static int maxB = 100;
         static int numTry = 25;
-        static object locker = new object();
 
 
         static void Main(string[] args)
@@ -25,9 +24,19 @@ namespace _29
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            
+            List<double> list = new List<double>();
+            double res = 0;
+            for (int a = minA; a <= maxA; a++)
+            {
+                for (int b = minB;  b <= maxB; b++)
+                {
+                    res = Math.Pow(a, b);
+                    if (!list.Contains(res))
+                        list.Add(res);
+                }
+            }
 
-            Console.WriteLine(1 + " (" + sw.ElapsedMilliseconds + "ms)");
+            Console.WriteLine(list.Count + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
         }
     }
