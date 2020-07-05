@@ -34,11 +34,11 @@ namespace _32
                     else
                         goto endParallel;
                 }
-
+            
                 for (int y = x+1; y < (int)Math.Pow(10, alphabet.Length - 2); y++)
                 {
                     int products = x * y;
-                    
+
                     if (x.ToString().Length + y.ToString().Length + products.ToString().Length != alphabet.Length || result.Contains(products))
                         continue;
                     List<char> copyAlphabet1 = copyAlphabet.ToList();
