@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Numerics;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualBasic;
 
 namespace _36
 {
@@ -25,9 +21,24 @@ namespace _36
         {
             Stopwatch sw = Stopwatch.StartNew();
 
-            
+            ulong sum = 0;
+            Parallel.For(1, max, (int x, ParallelLoopState pls) =>
+            {
+                bool good = true;
+                string base10 = Convert.ToString(x, 10);
+                for (int i = 0; i < base10.Length/2 && good; i++)
+                    if (base10[i] != base10[base10.Length - (i + 1)])
+                        good = false;
+                string base2 = Convert.ToString(x, 2);
+                for (int i = 0; i < base2.Length / 2 && good; i++)
+                    if (base2[i] != base2[base2.Length - (i + 1)])
+                        good = false;
+                if (good)
+                    lock (locker)
+                        sum += (ulong)x;
+            });
 
-            Console.WriteLine(1 + " (" + sw.ElapsedMilliseconds + "ms)");
+            Console.WriteLine(sum + " (" + sw.ElapsedMilliseconds + "ms)");
             sw.Stop();
         }
     }
